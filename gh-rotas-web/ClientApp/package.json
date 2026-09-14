@@ -1,0 +1,1 @@
+{"name":"gh-rotas-portal","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host localhost","build":"vite build"},"dependencies":{"react":"18.3.1","react-dom":"18.3.1"},"devDependencies":{"@playwright/test":"1.56.1","vite":"6.4.3"}}

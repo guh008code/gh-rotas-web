@@ -1,0 +1,13 @@
+.vs/
+**/bin/
+**/obj/
+**/node_modules/
+**/wwwroot/app/
+*.user
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.publishsettings
+*.pubxml.user

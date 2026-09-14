@@ -1,0 +1,4 @@
+{
+  "baseUrl": "",
+  "endpoints": { "register": "/auth/register", "login": "/auth/login", "profile": "/users/me" }
+}
