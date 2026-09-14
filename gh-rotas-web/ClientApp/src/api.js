@@ -1,6 +1,6 @@
-// Contrato provisório. Ajuste os mapeamentos quando a API estiver definida.
+// Contrato confirmado no Swagger da GH Rotas API.
 export const contract = {
-  register: ({ name, email, password }) => ({ name, email, password }),
+  register: ({ name, email, phone, password, birthDate }) => ({ name, email, phone, password, birthDate }),
   login: ({ email, password }) => ({ email, password }),
   token: (data) => data?.accessToken,
   profile: (data) => {
@@ -24,7 +24,7 @@ async function config() {
 async function request(operation, { body, token, signal } = {}) {
   try {
     const settings = await config();
-    const url = new URL(settings.baseUrl.replace(/\/$/, '') + '/' + settings.endpoints[operation].replace(/^\//, ''));
+    const url = new URL(settings.baseUrl.replace(/\/$/, '') + '/' + settings.endpoints[operation].replace(/^\//, ''), window.location.origin);
     if (url.protocol !== 'https:' && !(url.protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname))) throw new Error('O endereço da plataforma deve utilizar HTTPS.');
     const controller = new AbortController();
     const abort = () => controller.abort();
@@ -40,6 +40,8 @@ async function request(operation, { body, token, signal } = {}) {
       if (!response.ok) {
         const message = response.status === 401 ? (operation === 'login' ? 'E-mail ou senha inválidos.' : 'Sua sessão expirou. Entre novamente.')
           : response.status === 403 ? 'Você não tem permissão para acessar estes dados.'
+          : response.status === 502 ? 'Não foi possível conectar à API. Verifique se ela está em execução.'
+          : response.status === 504 ? 'A API demorou demais para responder. Tente novamente.'
           : response.status === 409 ? 'Já existe uma conta com este e-mail.'
           : response.status === 429 ? 'Muitas tentativas. Aguarde um pouco antes de tentar novamente.'
           : response.status === 400 || response.status === 422 ? 'Confira os dados informados e tente novamente.'

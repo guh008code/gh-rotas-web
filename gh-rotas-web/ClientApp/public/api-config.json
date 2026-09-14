@@ -1,4 +1,4 @@
 {
-  "baseUrl": "",
-  "endpoints": { "register": "/auth/register", "login": "/auth/login", "profile": "/users/me" }
+  "baseUrl": "/",
+  "endpoints": { "register": "/api/auth/cadastro", "login": "/api/auth/login", "profile": "/api/auth/perfil" }
 }
