@@ -47,4 +47,4 @@ Token mantido somente em memória, sem localStorage ou sessionStorage. Recarrega
 
 A configuração vazia gera uma mensagem ao tentar acessar/cadastrar, sem chamar uma API ou simular sucesso. Quando os endpoints e exemplos reais estiverem disponíveis, ajuste os mapeamentos e valide a integração ponta a ponta.
 
-As páginas Razor originais foram preservadas, mas não estão mapeadas. A página inicial agora é a aplicação React.
+O projeto utiliza somente a interface React. As páginas Razor e os arquivos estáticos do template original foram removidos. O ASP.NET Core hospeda os arquivos compilados em wwwroot/app e encaminha as rotas para a aplicação React.
