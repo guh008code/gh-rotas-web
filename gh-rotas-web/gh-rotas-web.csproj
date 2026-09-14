@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="ClientApp\**" />
+    <Content Remove="wwwroot\app\**" />
   </ItemGroup>
   <Target Name="BuildReact" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true'">
     <Exec WorkingDirectory="ClientApp" Command="npm ci" Condition="!Exists('ClientApp/node_modules/.package-lock.json')" />
